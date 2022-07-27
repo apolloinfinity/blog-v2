@@ -95,3 +95,12 @@ body {
   background-color: var(--light-color);
   font-family: 'Roboto Condensed', sans-serif;
 }
+
+.container {
+  margin: 0 auto;
+  width: 70%;
+}
+
+a {
+  cursor: pointer;
+}
