@@ -1,0 +1,22 @@
+nav {
+  background-color: var(--base-color);
+  color: #f3f3f3;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  padding: 0.7rem 3rem ;
+
+  .logo {
+    margin-right: 2rem;
+    color: var(--accent-color);
+  }
+  .nav-links {
+    // border: 1px solid red;
+    display: flex;
+    .nav-item {
+      display: inline-block;
+      padding: 10px 15px
+    }
+  }
+}
+
