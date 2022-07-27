@@ -1,0 +1,13 @@
+nav {
+  background-color: var(--dark-color);
+  color: #f3f3f3;
+  padding: 0.7rem 3rem ;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
