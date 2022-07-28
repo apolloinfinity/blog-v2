@@ -91,16 +91,32 @@ meter {
   --accent-color: #f26e11;
 }
 
-body {
+body, html {
   background-color: var(--light-color);
   font-family: 'Roboto Condensed', sans-serif;
+  color: var(--base-color);
+  height: 100%;
+  overflow: auto;
 }
 
 .container {
   margin: 0 auto;
   width: 70%;
+  padding-top: 2rem;
+  margin-bottom: 50px;
 }
 
 a {
   cursor: pointer;
+}
+
+.shadow {
+  box-shadow: 0px 7px 12px -4px rgba(40,40,40,0.68);
+}
+
+.btn {
+  padding: 10px 15px;
+  border: 1px solid var(--base-color);
+  background-color: var(--dark-color);
+  border-radius: 5px;
 }

@@ -1,1 +1,19 @@
-<p>users works!</p>
+<div *ngFor="let user of users" class="card shadow">
+  <div class="card-header">
+    <h2>User Info</h2>
+  </div>
+  <div class="card-content">
+    <h5>
+      Username: <span>{{ user.username }}</span>
+    </h5>
+    <p>
+      Name: <span>{{ user.name }}</span>
+    </p>
+    <p>
+      Email: <span>{{ user.email }}</span>
+    </p>
+  </div>
+  <div class="card-footer">
+    <a class="btn">View Profile</a>
+  </div>
+</div>
