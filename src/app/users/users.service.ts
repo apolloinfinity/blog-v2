@@ -12,18 +12,24 @@ export class UsersService {
   baseUrl: string = 'https://jsonplaceholder.typicode.com/users';
 
   // Set header Content-type
-  headers = new HttpHeaders().set('Content-type', 'application/json');
+
   // Set http options to created headers
   httpOptions = {
-    headers: this.headers,
+    headers: new HttpHeaders().set('Content-type', 'application/json'),
   };
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<UserApiResponse[]> {
+  getAllUsers(): Observable<UserApiResponse[]> {
     return this.http
       .get<UserApiResponse[]>(this.baseUrl)
       .pipe(tap((users) => console.log(users)));
+  }
+
+  getSingleUser(id: number): Observable<UserApiResponse> {
+    return this.http
+      .get<UserApiResponse>(`${this.baseUrl}/${id}`)
+      .pipe(tap((x) => console.log(x)));
   }
 }
 
