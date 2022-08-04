@@ -10,7 +10,6 @@ import { UserStore } from './store/users.store';
   providers: [UserStore],
 })
 export class UsersComponent implements OnInit {
-  users: UserApiResponse[] = [];
   displayedColumns: string[] = ['id', 'name', 'email', 'company', 'profile'];
 
   users$ = this.userStore.users$;
@@ -18,6 +17,6 @@ export class UsersComponent implements OnInit {
   constructor(private userStore: UserStore) {}
 
   ngOnInit(): void {
-    this.userStore.fetchUsers$;
+    this.userStore.fetchUsers$();
   }
 }

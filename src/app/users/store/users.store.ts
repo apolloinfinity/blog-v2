@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { map, tap } from 'rxjs';
+import { tap, switchMap, catchError, EMPTY } from 'rxjs';
 
 import { UserApiResponse as User } from '../models/User';
 import { UsersService } from '../users.service';
@@ -35,15 +35,35 @@ export class UserStore extends ComponentStore<UserState> {
 
   // effects to load data from API
 
-  fetchUsers$ = this.effect(() => {
-    return this.userService.getAllUsers().pipe(
-      tap(() => {
-        this.setStatus('loading');
-      }),
-      map((users) => {
-        this.setUsers(users);
-        this.setStatus('loaded');
+  fetchUsers$ = this.effect((origin$) =>
+    origin$.pipe(
+      tap(() => this.setStatus('loading')),
+      switchMap(() =>
+        this.userService.getAllUsers().pipe(
+          tap((users) => {
+            this.setUsers(users);
+          })
+        )
+      ),
+      catchError(() => {
+        this.setStatus('error');
+        return EMPTY;
       })
-    );
-  });
+    )
+  );
+
+  // fetchUsers$ = this.effect(() => {
+  //   return this.userService.getAllUsers().pipe(
+  //     tap(() => {
+  //       this.setStatus('loading');
+  //     }),
+  //     map((users) => {
+  //       this.setUsers(users);
+  //       this.setStatus('loaded');
+  //     })
+  //   );
+  // });
+
+  // if using an argument in the effect, the () must be used in the component using the effect
+  // else for example in users.component.ts: this.userStore.fetchUsers$
 }
